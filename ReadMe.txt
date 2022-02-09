@@ -1,0 +1,1 @@
+1. Add dependency for Navigation Components,Room,Lifecycle Components,Kotlin Components
