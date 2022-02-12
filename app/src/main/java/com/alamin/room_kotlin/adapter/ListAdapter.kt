@@ -1,15 +1,18 @@
 package com.alamin.room_kotlin.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.alamin.room_kotlin.R
-import com.alamin.room_kotlin.data.User
+import com.alamin.room_kotlin.data.model.User
+import com.alamin.room_kotlin.fragments.ListFragmentDirections
 import kotlinx.android.synthetic.main.row_user_list.view.*
 
 class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
-
+    private var TAG : String = "ListAdapter"
     private var userList = emptyList<User>();
 
     fun setData(userList: List<User>){
@@ -27,6 +30,10 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
         holder.itemView.txtFirstName.text = user.firstName;
         holder.itemView.txtLastName.text = user.lastName;
         holder.itemView.txtAge.text = user.age.toString();
+        holder.itemView.setOnClickListener {
+            val action = ListFragmentDirections.actionListFragmentToUpdateFragment(user);
+            holder.itemView.findNavController().navigate(action);
+        }
     }
 
     override fun getItemCount(): Int {

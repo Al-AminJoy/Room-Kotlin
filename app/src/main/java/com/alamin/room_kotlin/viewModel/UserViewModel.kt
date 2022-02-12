@@ -1,9 +1,12 @@
-package com.alamin.room_kotlin.data
+package com.alamin.room_kotlin.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import com.alamin.room_kotlin.data.model.User
+import com.alamin.room_kotlin.data.UserDatabase
+import com.alamin.room_kotlin.data.repository.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -19,6 +22,12 @@ class UserViewModel(application:Application): AndroidViewModel(application) {
     fun addUser(user: User){
         viewModelScope.launch(Dispatchers.IO) {
             repository.addUser(user);
+        }
+    }
+
+    fun updateUser(user: User){
+        viewModelScope.launch ( Dispatchers.IO){
+            repository.updateUser(user);
         }
     }
 }

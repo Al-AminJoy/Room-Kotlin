@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alamin.room_kotlin.R
 import com.alamin.room_kotlin.adapter.ListAdapter
-import com.alamin.room_kotlin.data.UserViewModel
+import com.alamin.room_kotlin.viewModel.UserViewModel
 import kotlinx.android.synthetic.main.fragment_list.view.*
 
 class ListFragment : Fragment() {

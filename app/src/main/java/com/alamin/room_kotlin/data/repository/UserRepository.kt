@@ -1,6 +1,8 @@
-package com.alamin.room_kotlin.data
+package com.alamin.room_kotlin.data.repository
 
 import androidx.lifecycle.LiveData
+import com.alamin.room_kotlin.data.model.User
+import com.alamin.room_kotlin.data.dao.UserDao
 
 class UserRepository(private val userDao: UserDao) {
 
@@ -10,4 +12,7 @@ class UserRepository(private val userDao: UserDao) {
         userDao.adUser(user);
     }
 
+    suspend fun updateUser(user: User){
+        userDao.updateUser(user);
+    }
 }
