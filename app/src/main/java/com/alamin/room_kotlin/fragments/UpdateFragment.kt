@@ -1,13 +1,12 @@
 package com.alamin.room_kotlin.fragments
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.util.Log
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -38,7 +37,32 @@ class UpdateFragment : Fragment() {
         view.btnUpdate.setOnClickListener {
             updateItem();
         }
+        //Ad menu
+        setHasOptionsMenu(true);
         return view;
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu, menu);
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_delete){
+            deleteUser();
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun deleteUser() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setPositiveButton("Yes"){_,_ ->
+            userViewModel.deleteUser(args.currentUser);
+            findNavController().navigate(R.id.action_updateFragment_to_listFragment);
+        }
+        builder.setNegativeButton("No"){_,_-> }
+        builder.setTitle("Delete ${args.currentUser.firstName} ?")
+        builder.setMessage("Are You Sure Want to Delete ${args.currentUser.firstName} ?")
+        builder.create().show();
     }
 
     private fun updateItem() {
