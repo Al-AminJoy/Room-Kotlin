@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.alamin.room_kotlin.R
 import com.alamin.room_kotlin.data.model.User
 import com.alamin.room_kotlin.fragments.ListFragmentDirections
@@ -31,6 +32,7 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
         holder.itemView.txtLastName.text = user.lastName;
         holder.itemView.txtAge.text = user.age.toString();
         holder.itemView.txtAddress.text = user.address?.city+"-"+user.address?.district;
+        holder.itemView.img.load(user.photoUrl);
         holder.itemView.setOnClickListener {
             val action = ListFragmentDirections.actionListFragmentToUpdateFragment(user);
             holder.itemView.findNavController().navigate(action);

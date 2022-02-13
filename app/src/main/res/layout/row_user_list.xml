@@ -6,6 +6,14 @@
     android:layout_height="wrap_content"
     android:padding="24sp">
 
+    <ImageView
+        android:id="@+id/img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBaseline_toBottomOf="parent"/>
     <TextView
         android:id="@+id/txtId"
         android:layout_width="wrap_content"
@@ -13,8 +21,9 @@
         android:text="1"
         android:textSize="40sp"
         android:textStyle="bold"
+        android:layout_marginHorizontal="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/img"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -52,12 +61,12 @@
 
     <TextView
         android:id="@+id/txtAddress"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         app:layout_constraintTop_toBottomOf="@id/txtFirstName"
         android:text="City-District"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="@id/txtFirstName"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

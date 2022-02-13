@@ -1,5 +1,6 @@
 package com.alamin.room_kotlin.data.model
 
+import android.graphics.Bitmap
 import android.os.Parcelable
 import androidx.room.Embedded
 import androidx.room.Entity
@@ -16,5 +17,6 @@ data class User(
     val lastName: String,
     val age: Int,
     @Embedded
-    val address: @RawValue Address? = null
+    val address: @RawValue Address? = null,
+    val photoUrl: Bitmap
 ): Parcelable
