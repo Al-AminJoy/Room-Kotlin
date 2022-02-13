@@ -30,6 +30,7 @@ class ListAdapter: RecyclerView.Adapter<ListAdapter.ViewHolder>() {
         holder.itemView.txtFirstName.text = user.firstName;
         holder.itemView.txtLastName.text = user.lastName;
         holder.itemView.txtAge.text = user.age.toString();
+        holder.itemView.txtAddress.text = user.address?.city+"-"+user.address?.district;
         holder.itemView.setOnClickListener {
             val action = ListFragmentDirections.actionListFragmentToUpdateFragment(user);
             holder.itemView.findNavController().navigate(action);

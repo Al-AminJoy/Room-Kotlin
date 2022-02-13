@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.alamin.room_kotlin.R
+import com.alamin.room_kotlin.data.model.Address
 import com.alamin.room_kotlin.data.model.User
 import com.alamin.room_kotlin.viewModel.UserViewModel
 import kotlinx.android.synthetic.main.fragment_add.*
@@ -36,7 +37,8 @@ class AddFragment : Fragment() {
         val lastName: String = etAddLastName.text.toString();
         val age = etAddAge.text;
         if (inputCheck(firstName, lastName, age)){
-            val user = User(0,firstName, lastName, Integer.parseInt(age.toString()));
+            val address = Address("Nikunja-2","Dhaka");
+            val user = User(0,firstName, lastName, Integer.parseInt(age.toString()), address);
             userViewModel.addUser(user);
             findNavController().navigate(R.id.action_addFragment_to_listFragment);
         }
